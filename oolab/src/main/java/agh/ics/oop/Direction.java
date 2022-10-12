@@ -11,16 +11,14 @@ public class Direction {
     }
     public static DirectionEnum zmiana(String argument) {
 
-        DirectionEnum ans = switch (argument) {
+        return switch (argument) {
             case "f" -> DirectionEnum.FORWARD;
             case "b" -> DirectionEnum.BACKWARD;
             case "r" -> DirectionEnum.RIGHT;
             case "l" -> DirectionEnum.LEFT;
-            default -> DirectionEnum.LEFT;
+            default -> DirectionEnum.FORWARD;
         };
-        return ans;
 
     }
-
 
 }

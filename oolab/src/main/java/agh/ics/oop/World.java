@@ -3,7 +3,7 @@ package agh.ics.oop;
 public class World {
 
     static public void main(String[] args) {
-        System.out.println("system wystartował");
+        System.out.println("system wystartowal");
         Direction.DirectionEnum[] tab = new Direction.DirectionEnum[args.length];
 
         for(int i = 0; i < args.length;i++){
@@ -11,7 +11,7 @@ public class World {
         };
 
         run(tab);
-        System.out.println("system zakonczył działanie");
+        System.out.println("system zakonczyl dzialanie");
     }
 
     static public void run(Direction.DirectionEnum[] tab) {
