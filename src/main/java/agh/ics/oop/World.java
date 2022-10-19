@@ -8,6 +8,7 @@ public class World {
         System.out.println(position2);
         System.out.println(position1.add(position2));
 
+        Animal pies = new Animal();
         Animal Kot = new Animal();
         MoveDirection[] directionArry = OptionsParser.parse(args);
         for(MoveDirection todo: directionArry ){
