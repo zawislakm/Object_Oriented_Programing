@@ -1,26 +1,34 @@
 package agh.ics.oop;
 
 public enum MapDirection {
-    NORTH,
-    EAST,
-    SOUTH,
-    WEST;
+    NORTH("Północ", new Vector2d(0, 1)),
+    EAST("Wschód", new Vector2d(1, 0)),
+    SOUTH("Południe", new Vector2d(0, -1)),
+    WEST("Zachód", new Vector2d(-1, 0));
 
+    private final String directionName;
+    private final Vector2d deafultVec;
 
-
-    public String toString(MapDirection arg){
-
-        return switch(arg){
-            case NORTH -> "Północ";
-            case SOUTH -> "Południe";
-            case WEST -> "Zachód";
-            case EAST -> "Wschód";
-        };
+    MapDirection(String kierunek, Vector2d vec) {
+        this.directionName = kierunek;
+        this.deafultVec = vec;
     }
 
-    public  MapDirection next()
-    {
-        return switch(this){
+
+    public String toString() {
+
+        return this.directionName;
+        //used before enum values added
+        //return switch (arg) {
+        //case NORTH -> "Północ";
+        //case SOUTH -> "Południe";
+        //case WEST -> "Zachód";
+        //case EAST -> "Wschód";
+        //};
+    }
+
+    public MapDirection next() {
+        return switch (this) {
             case EAST -> SOUTH;
             case SOUTH -> WEST;
             case WEST -> NORTH;
@@ -29,9 +37,8 @@ public enum MapDirection {
     }
 
 
-
-    public  MapDirection previous(){
-        return switch (this){
+    public MapDirection previous() {
+        return switch (this) {
             case EAST -> NORTH;
             case NORTH -> WEST;
             case WEST -> SOUTH;
@@ -39,12 +46,15 @@ public enum MapDirection {
         };
     }
 
-    public  Vector2d toUnitVector(){
-        return switch (this){
-            case NORTH -> new Vector2d(0,1);
-            case EAST -> new Vector2d(1,0);
-            case SOUTH -> new Vector2d(0,-1);
-            case WEST -> new Vector2d(-1,0);
-        };
+    public Vector2d toUnitVector() {
+
+        return this.deafultVec;
+        //used before enum values added
+        //return switch (this) {
+        //case NORTH -> new Vector2d(0, 1);
+        //case EAST -> new Vector2d(1, 0);
+        //case SOUTH -> new Vector2d(0, -1);
+        //case WEST -> new Vector2d(-1, 0);
+        //};
     }
 }
