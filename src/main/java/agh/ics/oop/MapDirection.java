@@ -7,11 +7,11 @@ public enum MapDirection {
     WEST("Zachód", new Vector2d(-1, 0));
 
     private final String directionName;
-    private final Vector2d deafultVec;
+    private final Vector2d defaultVec;
 
     MapDirection(String kierunek, Vector2d vec) {
         this.directionName = kierunek;
-        this.deafultVec = vec;
+        this.defaultVec = vec;
     }
 
 
@@ -48,7 +48,7 @@ public enum MapDirection {
 
     public Vector2d toUnitVector() {
 
-        return this.deafultVec;
+        return this.defaultVec;
         //used before enum values added
         //return switch (this) {
         //case NORTH -> new Vector2d(0, 1);

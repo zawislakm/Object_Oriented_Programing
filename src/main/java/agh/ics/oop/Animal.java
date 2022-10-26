@@ -13,12 +13,13 @@ public class Animal {
     }
 
     public String toString() {
-        return "Pozycja zwierzaka:" + position.toString() + ", zorientowny jest: " + orientation.toString();
+        return "Position: " + position.toString() + ", Direction: " + orientation.toString();
     }
 
     public boolean isAt(Vector2d pos) {
         return position.equals(pos);
     }
+
 
     public void move(MoveDirection direction) {
         switch (direction) {
@@ -26,16 +27,16 @@ public class Animal {
             case RIGHT -> this.orientation = orientation.next();
             case FORWARD -> {
                 Vector2d temporary = position.add(orientation.toUnitVector());
-                if (temporary.precedes(new Vector2d(4, 4)) && temporary.follows(new Vector2d(0, 0))) {
-                    this.position = temporary.lowerLeft(new Vector2d(4, 4));
-                }
+                if (temporary.precedes(new Vector2d(4, 4)) && temporary.follows(new Vector2d(0, 0)))
+                    this.position = temporary;
+
             }
             case BACKWARD -> {
                 Vector2d temporary = position.subtract(orientation.toUnitVector());
-                if (temporary.precedes(new Vector2d(4, 4)) && temporary.follows(new Vector2d(0, 0))) {
-                    this.position = temporary.upperRight(new Vector2d(0, 0));
-                }
-            }//temporary dodaje nawet jesli wychodzi po za limity a potem ustawiany jest position patrzac na limity
+                if (temporary.precedes(new Vector2d(4, 4)) && temporary.follows(new Vector2d(0, 0)))
+                    this.position = temporary;
+
+            }
         }
 
     }
