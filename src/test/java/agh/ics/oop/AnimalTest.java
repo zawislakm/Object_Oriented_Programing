@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AnimalTest {
 
-    @Test
+    @Test // lab3 tests, doesnt work with lab4 up versions
     void moveOutOfMapTest(){
         Animal guineaPig1 = new Animal();// moves to up
         World.runAnimal(new String[]{"f","f","f","f","f"},guineaPig1);
@@ -32,6 +32,7 @@ public class AnimalTest {
         assertEquals("Position: (1,3), Direction: Południe",guineaPig5.toString());
         assertTrue(guineaPig5.isAt(new Vector2d(1,3)));
 
-
     }
+
+
 }
