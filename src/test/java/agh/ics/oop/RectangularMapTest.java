@@ -20,7 +20,7 @@ public class RectangularMapTest {
         assertNull(mapTest.objectAt(new Vector2d(100,100)));
     }
     @Test
-    void isOccupied(){ // uses object at
+    void isOccupiedTest(){ // uses object at
         IWorldMap mapTest = new RectangularMap(10,10);
         Animal guineaPig1 = new Animal(mapTest,new Vector2d(2,2));
         Animal guineaPig2 = new Animal(mapTest,new Vector2d(5,5));
