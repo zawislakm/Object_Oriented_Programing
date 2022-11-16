@@ -2,7 +2,9 @@ package agh.ics.oop;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//checked to dla uzytkownika
+//unchecked blad programistyczny
+//errora nie da sie lapac
 public class GrassField extends AbstractWorldMap {
 
 
@@ -14,7 +16,7 @@ public class GrassField extends AbstractWorldMap {
     }
 
 
-    void addGrass(int n) {
+    private void addGrass(int n) {
         int k = 0; // iterator
         while (k < n) { //not grasses size because its used letter to add only on grass
             int randomx = (int) (Math.random() * this.range + 1);
@@ -30,13 +32,13 @@ public class GrassField extends AbstractWorldMap {
 
     public String toString() {
 
-        //dynamic getting border of map
+        //getting border of map
         for (Grass grass : grasses) {
             Vector2d temporary = grass.getPosition();
             this.lowerLeft = this.lowerLeft.lowerLeft(temporary);
             this.upperRight = this.upperRight.upperRight(temporary);
         }
-        for (Animal animal : zwierzaki) {
+        for (Animal animal : animals) {
             Vector2d temporary = animal.getPosition();
             this.lowerLeft = this.lowerLeft.lowerLeft(temporary);
             this.upperRight = this.upperRight.upperRight(temporary);
@@ -48,12 +50,12 @@ public class GrassField extends AbstractWorldMap {
 
     public boolean canMoveTo(Vector2d position) {
         Object object = objectAt(position);
-        if (object instanceof Animal){ //animal on this position cant move here
+        if (object instanceof Animal){                  //animal on this position can't move here
             return false;
         }
-        if (object instanceof Grass){ // grass on this position, can move here
-            addGrass(1); // add new grass somewhere else
-            grasses.remove((Grass) object); // remove grass from this position
+        if (object instanceof Grass){                   // grass on this position, can move here
+            addGrass(1);                             // add new grass somewhere else
+            grasses.remove((Grass) object);             // remove grass from this position
             //order important, in other order it was possible to add grass on deleted now position
 
         }

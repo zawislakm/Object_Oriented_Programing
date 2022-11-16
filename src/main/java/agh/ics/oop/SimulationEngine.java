@@ -17,7 +17,6 @@ public class SimulationEngine implements IEngine {
             Animal zwierzak = new Animal(map, position);
             if (map.place(zwierzak)) {
                 zwierzaki.add(zwierzak);
-                System.out.println('x');
             }
 
         }
