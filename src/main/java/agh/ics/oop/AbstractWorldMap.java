@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-abstract class AbstractWorldMap implements IWorldMap,IPositionChangeObserver {
+public abstract class AbstractWorldMap implements IWorldMap,IPositionChangeObserver {
 
     protected Map<Vector2d,AbstractWorldMapElement> mapElements = new HashMap<>();
     private final MapVisualizer map = new MapVisualizer(this);
@@ -29,7 +29,8 @@ abstract class AbstractWorldMap implements IWorldMap,IPositionChangeObserver {
             animal.addObserver(this);
             return true;
         }
-        return false;
+        throw new IllegalArgumentException(animal.getPosition().toString() + " is wrong position");
+
     }
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition){
         AbstractWorldMapElement element = this.mapElements.get(oldPosition);
@@ -37,19 +38,13 @@ abstract class AbstractWorldMap implements IWorldMap,IPositionChangeObserver {
         this.mapElements.put(newPosition,element);
     }
 
-    public Vector2d getLowerLeft(){
-        Vector2d lowerLeft = new Vector2d(Integer.MAX_VALUE, Integer.MAX_VALUE);
-        for(Vector2d key : mapElements.keySet()){
-            lowerLeft = lowerLeft.lowerLeft(key);
-        }
+
+    public Vector2d getUpperRight(){
         return lowerLeft;
     }
 
-    public Vector2d getUpperRight(){
-        Vector2d upperRight = new Vector2d(Integer.MIN_VALUE, Integer.MIN_VALUE);
-        for(Vector2d key : mapElements.keySet()){
-            upperRight = upperRight.upperRight(key);
-        }
+    public Vector2d getLowerLeft(){
         return upperRight;
     }
+
 }

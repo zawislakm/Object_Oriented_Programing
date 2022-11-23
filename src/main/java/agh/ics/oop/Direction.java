@@ -23,8 +23,11 @@ public enum Direction {
                 case "b" -> {movedata[k] = BACKWARD;k++;}
                 case "r" -> {movedata[k] = RIGHT;k++;}
                 case "l" -> {movedata[k] = LEFT;k++;}
-                default -> {}
+                default -> {
+
+                }
             }
+
 
         }
 

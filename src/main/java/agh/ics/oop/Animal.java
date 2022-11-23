@@ -8,14 +8,16 @@ public class Animal extends AbstractWorldMapElement {
     private MapDirection orientation = MapDirection.NORTH;
     private final IWorldMap map;
     private final List<IPositionChangeObserver> observersList = new ArrayList<>();
-    public Animal(IWorldMap map){
+
+    public Animal(IWorldMap map) {
         this.map = map;
         //if (this.map instanceof IPositionChangeObserver){ przeniesiony do place
         //    addObserver((IPositionChangeObserver) this.map);
         //}
 
     }
-    public Animal(IWorldMap map,Vector2d initialPosition){
+
+    public Animal(IWorldMap map, Vector2d initialPosition) {
         this(map);
         this.position = initialPosition;
 
@@ -23,7 +25,7 @@ public class Animal extends AbstractWorldMapElement {
 
 
     public String toString() {
-        return switch (this.orientation){
+        return switch (this.orientation) {
             case NORTH -> "^";
             case EAST -> ">";
             case SOUTH -> "v";
@@ -52,7 +54,7 @@ public class Animal extends AbstractWorldMapElement {
             }
             case BACKWARD -> {
                 Vector2d newPosition = position.subtract(orientation.toUnitVector());
-                if (map.canMoveTo(newPosition)){
+                if (map.canMoveTo(newPosition)) {
                     Vector2d oldPosition = this.position;//zmiana kolejnosc przy notyfikacji
                     this.position = newPosition;
                     positionChangedA(oldPosition, this.position);
@@ -61,10 +63,12 @@ public class Animal extends AbstractWorldMapElement {
             }
         }
     }
-    public void addObserver(IPositionChangeObserver observer){
+
+    public void addObserver(IPositionChangeObserver observer) {
         this.observersList.add(observer);
     }
-    public void removeObserver(IPositionChangeObserver observer){
+
+    public void removeObserver(IPositionChangeObserver observer) {
         this.observersList.remove(observer);
     }
 
