@@ -10,9 +10,9 @@ public class Animal extends AbstractWorldMapElement {
     private final List<IPositionChangeObserver> observersList = new ArrayList<>();
     public Animal(IWorldMap map){
         this.map = map;
-        if (this.map instanceof IPositionChangeObserver){
-            addObserver((IPositionChangeObserver) this.map);
-        }
+        //if (this.map instanceof IPositionChangeObserver){ przeniesiony do place
+        //    addObserver((IPositionChangeObserver) this.map);
+        //}
 
     }
     public Animal(IWorldMap map,Vector2d initialPosition){
@@ -41,27 +41,30 @@ public class Animal extends AbstractWorldMapElement {
             case LEFT -> this.orientation = orientation.previous();
             case RIGHT -> this.orientation = orientation.next();
             case FORWARD -> {
-                Vector2d temporary = position.add(orientation.toUnitVector());
-                if (map.canMoveTo(temporary)) {
-                    positionChangedA(this.position, temporary);
-                    this.position = temporary;
+                Vector2d newPosition = position.add(orientation.toUnitVector());
+                if (map.canMoveTo(newPosition)) {
+                    Vector2d oldPosition = this.position; //zmiana kolejnosc przy notyfikacji
+                    this.position = newPosition;
+                    positionChangedA(oldPosition, this.position);
+
                 }
 
             }
             case BACKWARD -> {
-                Vector2d temporary = position.subtract(orientation.toUnitVector());
-                if (map.canMoveTo(temporary)){
-                    positionChangedA(this.position,temporary);
-                    this.position = temporary;;
+                Vector2d newPosition = position.subtract(orientation.toUnitVector());
+                if (map.canMoveTo(newPosition)){
+                    Vector2d oldPosition = this.position;//zmiana kolejnosc przy notyfikacji
+                    this.position = newPosition;
+                    positionChangedA(oldPosition, this.position);
                 }
 
             }
         }
     }
-    void addObserver(IPositionChangeObserver observer){
+    public void addObserver(IPositionChangeObserver observer){
         this.observersList.add(observer);
     }
-    void removeObserver(IPositionChangeObserver observer){
+    public void removeObserver(IPositionChangeObserver observer){
         this.observersList.remove(observer);
     }
 

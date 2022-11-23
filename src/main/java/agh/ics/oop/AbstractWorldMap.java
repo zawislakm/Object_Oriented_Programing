@@ -24,8 +24,9 @@ abstract class AbstractWorldMap implements IWorldMap,IPositionChangeObserver {
     }
 
     public boolean place(Animal animal) {
-        if (canMoveTo(animal.getPosition())) {
+        if (canMoveTo(animal.getPosition())) {//tutaj przeniesc dodawanie obserwera
             mapElements.put(animal.getPosition(),animal);
+            animal.addObserver(this);
             return true;
         }
         return false;
