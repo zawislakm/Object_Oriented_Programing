@@ -38,9 +38,11 @@ public class RectangularMapTest {
         IWorldMap mapTest = new RectangularMap(10, 10);
         assertTrue(mapTest.place(new Animal(mapTest, new Vector2d(1, 1))));
         assertTrue(mapTest.place(new Animal(mapTest, new Vector2d(2, 2))));
-        assertFalse(mapTest.place(new Animal(mapTest, new Vector2d(1, 1)))); //one animal already there
-        assertFalse(mapTest.place(new Animal(mapTest, new Vector2d(-10, -10)))); //out of mapTest
-        assertFalse(mapTest.place(new Animal(mapTest, new Vector2d(100, 2)))); // out of mapTest
+        //assertFalse(mapTest.place(new Animal(mapTest, new Vector2d(1, 1)))); //one animal already there
+        assertThrows(IllegalArgumentException.class, () -> mapTest.place(new Animal(mapTest,new Vector2d(1,1)))); //one animal already there
+        assertThrows(IllegalArgumentException.class, () -> mapTest.place(new Animal(mapTest, new Vector2d(-10, -10)))); // out of map
+        assertThrows(IllegalArgumentException.class, () -> mapTest.place(new Animal(mapTest, new Vector2d(100, 2)))); // out of map
+
 
     }
 
