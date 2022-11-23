@@ -54,7 +54,7 @@ public class Vector2d {
     }
 
     public int hashCode() { //zmiana hash codu, nie rozumien za bardzo po co
-        return Objects.hash(x, y);
+        return Objects.hash(this.x, this.y);
     }
 
     public Vector2d opposite() {

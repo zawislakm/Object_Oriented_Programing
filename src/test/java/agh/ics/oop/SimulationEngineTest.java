@@ -18,14 +18,14 @@ public class SimulationEngineTest {
         engine1.run();
 
 
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(0).getPosition(),new Vector2d(3,3));
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(0).toString(),"<");
+        assertEquals(((SimulationEngine) engine1).animals.get(0).getPosition(),new Vector2d(3,3));
+        assertEquals(((SimulationEngine) engine1).animals.get(0).toString(),"<");
 
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(1).getPosition(),new Vector2d(3,0));
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(1).toString(),"^");
+        assertEquals(((SimulationEngine) engine1).animals.get(1).getPosition(),new Vector2d(3,0));
+        assertEquals(((SimulationEngine) engine1).animals.get(1).toString(),"^");
 
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(2).getPosition(),new Vector2d(10,1));
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(2).toString(),">");
+        assertEquals(((SimulationEngine) engine1).animals.get(2).getPosition(),new Vector2d(10,1));
+        assertEquals(((SimulationEngine) engine1).animals.get(2).toString(),">");
 
 
 
@@ -38,14 +38,14 @@ public class SimulationEngineTest {
 
 
 
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(0).getPosition(),new Vector2d(8,8));
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(0).toString(),"^");
+        assertEquals(((SimulationEngine) engine2).animals.get(0).getPosition(),new Vector2d(8,8));
+        assertEquals(((SimulationEngine) engine2).animals.get(0).toString(),"^");
 
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(1).getPosition(),new Vector2d(0,2));
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(1).toString(),"^");
+        assertEquals(((SimulationEngine) engine2).animals.get(1).getPosition(),new Vector2d(0,2));
+        assertEquals(((SimulationEngine) engine2).animals.get(1).toString(),"^");
 
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(2).getPosition(),new Vector2d(0,3));
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(2).toString(),"^");
+        assertEquals(((SimulationEngine) engine2).animals.get(2).getPosition(),new Vector2d(0,3));
+        assertEquals(((SimulationEngine) engine2).animals.get(2).toString(),"^");
 
 
         IWorldMap map3 = new RectangularMap(10,5); //animal collision test
@@ -55,11 +55,11 @@ public class SimulationEngineTest {
         IEngine engine3 = new SimulationEngine(directions3,map3,animals3);
         engine3.run();
 
-        assertEquals(((SimulationEngine) engine3).zwierzaki.get(0).getPosition(),new Vector2d(2,0));
-        assertEquals(((SimulationEngine) engine3).zwierzaki.get(0).toString(),"v");
+        assertEquals(((SimulationEngine) engine3).animals.get(0).getPosition(),new Vector2d(2,0));
+        assertEquals(((SimulationEngine) engine3).animals.get(0).toString(),"v");
 
-        assertEquals(((SimulationEngine) engine3).zwierzaki.get(1).getPosition(),new Vector2d(3,5));
-        assertEquals(((SimulationEngine) engine3).zwierzaki.get(1).toString(),"^");
+        assertEquals(((SimulationEngine) engine3).animals.get(1).getPosition(),new Vector2d(3,5));
+        assertEquals(((SimulationEngine) engine3).animals.get(1).toString(),"^");
 
     }
     @Test
@@ -72,14 +72,14 @@ public class SimulationEngineTest {
         engine1.run();
 
 
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(0).getPosition(),new Vector2d(3,3));
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(0).toString(),"<");
+        assertEquals(((SimulationEngine) engine1).animals.get(0).getPosition(),new Vector2d(3,3));
+        assertEquals(((SimulationEngine) engine1).animals.get(0).toString(),"<");
 
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(1).getPosition(),new Vector2d(3,-2));
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(1).toString(),"^");
+        assertEquals(((SimulationEngine) engine1).animals.get(1).getPosition(),new Vector2d(3,-2));
+        assertEquals(((SimulationEngine) engine1).animals.get(1).toString(),"^");
 
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(2).getPosition(),new Vector2d(12,1));
-        assertEquals(((SimulationEngine) engine1).zwierzaki.get(2).toString(),">");
+        assertEquals(((SimulationEngine) engine1).animals.get(2).getPosition(),new Vector2d(12,1));
+        assertEquals(((SimulationEngine) engine1).animals.get(2).toString(),">");
 
 
 
@@ -92,14 +92,14 @@ public class SimulationEngineTest {
 
 
 
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(0).getPosition(),new Vector2d(8,14));
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(0).toString(),"^");
+        assertEquals(((SimulationEngine) engine2).animals.get(0).getPosition(),new Vector2d(8,14));
+        assertEquals(((SimulationEngine) engine2).animals.get(0).toString(),"^");
 
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(1).getPosition(),new Vector2d(0,2));
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(1).toString(),"^");
+        assertEquals(((SimulationEngine) engine2).animals.get(1).getPosition(),new Vector2d(0,2));
+        assertEquals(((SimulationEngine) engine2).animals.get(1).toString(),"^");
 
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(2).getPosition(),new Vector2d(0,3));
-        assertEquals(((SimulationEngine) engine2).zwierzaki.get(2).toString(),"^");
+        assertEquals(((SimulationEngine) engine2).animals.get(2).getPosition(),new Vector2d(0,3));
+        assertEquals(((SimulationEngine) engine2).animals.get(2).toString(),"^");
 
 
         IWorldMap map3 = new GrassField(8); //animal collision test
@@ -109,11 +109,11 @@ public class SimulationEngineTest {
         IEngine engine3 = new SimulationEngine(directions3,map3,animals3);
         engine3.run();
 
-        assertEquals(((SimulationEngine) engine3).zwierzaki.get(0).getPosition(),new Vector2d(2,-1));
-        assertEquals(((SimulationEngine) engine3).zwierzaki.get(0).toString(),"v");
+        assertEquals(((SimulationEngine) engine3).animals.get(0).getPosition(),new Vector2d(2,-1));
+        assertEquals(((SimulationEngine) engine3).animals.get(0).toString(),"v");
 
-        assertEquals(((SimulationEngine) engine3).zwierzaki.get(1).getPosition(),new Vector2d(3,7));
-        assertEquals(((SimulationEngine) engine3).zwierzaki.get(1).toString(),"^");
+        assertEquals(((SimulationEngine) engine3).animals.get(1).getPosition(),new Vector2d(3,7));
+        assertEquals(((SimulationEngine) engine3).animals.get(1).toString(),"^");
 
     }
 

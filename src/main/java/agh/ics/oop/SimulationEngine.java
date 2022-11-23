@@ -6,7 +6,7 @@ import java.util.List;
 public class SimulationEngine implements IEngine {
 
     private final IWorldMap map;
-    protected List<Animal> zwierzaki = new ArrayList<>();
+    protected List<Animal> animals = new ArrayList<>();
     private final MoveDirection[] directions;
 
     public SimulationEngine(MoveDirection[] directions, IWorldMap map, Vector2d[] positions) {
@@ -14,9 +14,9 @@ public class SimulationEngine implements IEngine {
         this.map = map;
 
         for (Vector2d position : positions) {
-            Animal zwierzak = new Animal(map, position);
-            if (map.place(zwierzak)) {
-                zwierzaki.add(zwierzak);
+            Animal animal = new Animal(map, position);
+            if (map.place(animal)) {
+                animals.add(animal);
             }
 
         }
@@ -24,10 +24,10 @@ public class SimulationEngine implements IEngine {
 
     public void run() {
         System.out.println(this.map);
-        int len = zwierzaki.size();
+        int len = animals.size();
         int k = 0;
         for (MoveDirection direction : directions) {
-            zwierzaki.get(k % len).move(direction);
+            animals.get(k % len).move(direction);
             k++;
         }
         System.out.println(this.map);
