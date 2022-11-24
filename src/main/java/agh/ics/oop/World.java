@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class World {
     static public void main(String[] args) {
 
-        Application.launch(App.class,args);
+        Application.launch(App.class,args);//?
 
     }
 }
