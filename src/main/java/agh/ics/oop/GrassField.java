@@ -32,8 +32,8 @@ public class GrassField extends AbstractWorldMap {
     }
     public String toString() {
         //getting border of map
-        this.lowerLeft = this.getLowerLeft();
-        this.upperRight = this.getUpperRight();
+        this.lowerLeft = this.mapBoundary.getLowerLeft();
+        this.upperRight = this.mapBoundary.getUpperRight();
 
         return super.toString(); // order importance  Animal <- Grass <- null in drawing
 
