@@ -46,21 +46,21 @@ public class MapBoundary implements IPositionChangeObserver {
         positionAdd(newPosition);
     }
 
-    void positionAdd(Vector2d newPosition) { //dodaje odrazu do setx i sety
+    protected void positionAdd(Vector2d newPosition) { //dodaje odrazu do setx i sety
         setX.add(newPosition);
         setY.add(newPosition);
     }
 
-    void positionRemove(Vector2d oldPosition) {//usuwa odrazu do setx i sety
+    protected void positionRemove(Vector2d oldPosition) {//usuwa odrazu do setx i sety
         setX.remove(oldPosition);
         setY.remove(oldPosition);
     }
 
-    public Vector2d getLowerLeft(){
+    protected Vector2d getLowerLeft(){
         return new Vector2d(this.setX.first().x,this.setY.first().y); //zwaraca pozycje lewy dol
     }
 
-    public Vector2d getUpperRight(){
+    protected Vector2d getUpperRight(){
         return new Vector2d(this.setX.last().x,this.setY.last().y); //zwraca pozycja prawy dol
     }
 }

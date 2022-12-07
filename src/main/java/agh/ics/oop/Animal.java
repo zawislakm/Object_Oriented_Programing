@@ -11,10 +11,6 @@ public class Animal extends AbstractWorldMapElement {
 
     public Animal(IWorldMap map) {
         this.map = map;
-        //if (this.map instanceof IPositionChangeObserver){ przeniesiony do place
-        //    addObserver((IPositionChangeObserver) this.map);
-        //}
-
     }
 
     public Animal(IWorldMap map, Vector2d initialPosition) {
@@ -33,6 +29,19 @@ public class Animal extends AbstractWorldMapElement {
         };
     }
 
+    public String getImageName(){
+        return switch (this.orientation){
+            case NORTH -> "src/main/resources/up.png";
+            case EAST ->  "src/main/resources/right.png";
+            case SOUTH -> "src/main/resources/down.png";
+            case WEST ->  "src/main/resources/left.png";
+        };
+    }
+
+    public String getLabel(){
+        return this.position.toString();
+    }
+
     public boolean isAt(Vector2d pos) {
         return position.equals(pos);
     }
@@ -47,7 +56,7 @@ public class Animal extends AbstractWorldMapElement {
                 if (map.canMoveTo(newPosition)) {
                     Vector2d oldPosition = this.position; //zmiana kolejnosc przy notyfikacji
                     this.position = newPosition;
-                    positionChangedA(oldPosition, this.position);
+                    notifyObservers(oldPosition, this.position);
 
                 }
 
@@ -57,7 +66,7 @@ public class Animal extends AbstractWorldMapElement {
                 if (map.canMoveTo(newPosition)) {
                     Vector2d oldPosition = this.position;//zmiana kolejnosc przy notyfikacji
                     this.position = newPosition;
-                    positionChangedA(oldPosition, this.position);
+                    notifyObservers(oldPosition, this.position);
                 }
 
             }
@@ -72,7 +81,7 @@ public class Animal extends AbstractWorldMapElement {
         this.observersList.remove(observer);
     }
 
-    private void positionChangedA(Vector2d oldPosition, Vector2d newPosition) {
+    private void notifyObservers(Vector2d oldPosition, Vector2d newPosition) {
         for (IPositionChangeObserver observer : this.observersList)
             observer.positionChanged(oldPosition, newPosition);
     }
